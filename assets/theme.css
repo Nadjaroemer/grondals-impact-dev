@@ -5890,6 +5890,12 @@ split-lines {
   max-width: max-content;
   display: block;
   position: relative;
+  background: url('../assets/header-divider-wave.png');
+  border-bottom: none;
+  background-repeat: repeat-x;
+  background-size: 100% 14px;
+  background-position: top;
+  background-color: #FEFBF3;
 }
 
 .header__logo-image {
