@@ -9943,3 +9943,11 @@ split-lines {
   display: -webkit-box;
   overflow: hidden;
 }
+
+/* Header Wave-Image */
+.header-wave-image {
+  width: 3000px; 
+  height: 36px;
+  margin-top: -10px
+}
+/* Header Wave-Image End*/
