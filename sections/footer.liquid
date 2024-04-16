@@ -1,4 +1,5 @@
 {%- assign newsletter_block = section.blocks | where: 'type', 'newsletter' | first -%}
+{%- assign paymentIconsFix = "mobilepay,dankort,visa,master,klarna,maestro,apple_pay" | split: "," -%}
 
 {%- if section.blocks.size > 3 -%}
 <style>
@@ -164,9 +165,9 @@
         {%- endcomment -%}
 
         <div class="footer__aside-bottom">
-          {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+          {%- if section.settings.show_payment_icons and paymentIconsFix.size > 0 -%}
             <div class="footer__payment-icons h-stack wrap gap-2">
-              {%- for type in shop.enabled_payment_types -%}
+              {%- for type in paymentIconsFix -%}
                 {{- type | payment_type_svg_tag -}}
               {%- endfor -%}
             </div>
