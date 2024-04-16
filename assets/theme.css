@@ -402,6 +402,16 @@ height-observer, visibility-progress, scroll-area, video-media, model-media, med
   padding-block-start: var(--accordion-spacing);
   padding-block-end: var(--accordion-spacing);
   display: flex;
+  border-bottom: none;
+  border-color: transparent;
+  background-repeat: repeat-x;
+  background-size: 272% 9px;
+  background-image:url('../assets/grondals-bolge-petroleum.png');
+}
+@media screen and (max-width: 500px) {
+    .accordion__toggle {
+      background-size: 211% 4px;
+    }
 }
 
 .accordion__content {
