@@ -1,3 +1,4 @@
+{%- assign paymentIconsFix = "mobilepay,dankort,visa,master,klarna,maestro,apple_pay" | split: "," -%}
 <cart-drawer {% if request.design_mode %}handle-section-events{% endif %} class="cart-drawer drawer drawer--lg" id="cart-drawer">
   {%- if cart.item_count == 0 -%}
     <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}">
@@ -173,6 +174,12 @@
           {%- render 'button', type: 'submit', content: checkout_label, icon: 'picto-lock', name: 'checkout', size: 'xl' -%}
         {%- endif -%}
       </form>
+      {% comment %} Payment Icons i Cart Drawer Footer {% endcomment %}
+      <div class="footer__payment-icons h-stack wrap gap-2" style="justify-content: center;">
+        {%- for type in paymentIconsFix -%}
+          {{- type | payment_type_svg_tag -}}
+        {%- endfor -%}
+      </div>   
     </div>
   {%- endif -%}
 </cart-drawer>
