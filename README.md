@@ -43,5 +43,28 @@ Insert on the first line:
     {%- endfor -%}
 </div>  
 ```
+## Accordion Content 
+Replace border with wave-image. Add background image to **.accordion__toggle** 
 
+````
+    .accordion__toggle {
+  gap: var(--spacing-2);
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-start: var(--accordion-spacing);
+  padding-block-end: var(--accordion-spacing);
+  display: flex;
+  border-bottom: none;
+  border-color: transparent;
+  background-repeat: repeat-x;
+  background-size: 272% 9px;
+  background-image:url('../assets/grondals-bolge-petroleum.png');
+}
+@media screen and (max-width: 500px) {
+    .accordion__toggle {
+      background-size: 211% 4px;
+    }
+}
+````
 ## Product Card
