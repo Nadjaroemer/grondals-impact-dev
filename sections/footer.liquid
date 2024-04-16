@@ -177,6 +177,31 @@
       </div>
     </div>
   </div>
+  {%- if section.settings.background_image != blank -%}
+    <div>
+      <img 
+      src="{{ section.settings.background_image | img_url: 'master' }}" 
+      style="{% if section.settings.background_image_hide_mobile %}display:none;{% endif %}"
+      class="footer-background"/>
+    </div>
+    <style>
+      .footer-background {
+        height: {{ section.settings.background_height_mobile }}px;
+        width: 100%;
+        object-fit: cover;
+      }
+      @media only screen and (min-width:769px) {
+        .footer-background {
+          height: {{ section.settings.background_height_tablet }}px;
+        }
+      } 
+      @media only screen and (min-width:1280px) {
+        .footer-background {
+          height: {{ section.settings.background_height }}px;
+        }
+      }          
+    </style>        
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -232,6 +257,47 @@
       "id": "show_locale_selector",
       "label": "Show language selector",
       "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "background_image_hide_mobile",
+      "label": "Hide image on mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "background_height_mobile",
+      "label": "Height (mobile)",
+      "default": 450,
+      "min": 100,
+      "max": 600,
+      "step": 10,
+      "unit": "px"
+    },              
+    {
+      "type": "range",
+      "id": "background_height_tablet",
+      "label": "Height (tablet)",
+      "default": 450,
+      "min": 100,
+      "max": 600,
+      "step": 10,
+      "unit": "px"
+    },              
+    {
+      "type": "range",
+      "id": "background_height",
+      "label": "Height (desktop)",
+      "default": 450,
+      "min": 50,
+      "max": 600,
+      "step": 10,
+      "unit": "px"
     }
   ],
   "blocks": [
