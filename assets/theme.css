@@ -9973,3 +9973,13 @@ split-lines {
   font-weight: 400;
   font-style: normal;
 }
+
+/* Seperator block with new wave background image*/
+
+hr.product-info__separator {
+    background-image: url(../assets/grondals-bolge-petroleum.png);
+    background-size: 100% 4px;
+    background-repeat: no-repeat;
+    height: 6px;
+    border: 0;
+}
