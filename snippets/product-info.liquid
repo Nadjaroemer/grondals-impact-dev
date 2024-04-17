@@ -1,5 +1,10 @@
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+
+
 <safe-sticky class="product-info">
   {%- for block in section.blocks -%}
     {%- assign previous_block_index = forloop.index0 | minus: 1 -%}
@@ -222,6 +227,25 @@
       {%- when 'pickup_availability' -%}
         <div class="product-info__pickup-availability" {{ block.shopify_attributes }}>
           {%- render 'pickup-availability', product_variant: product.selected_or_first_available_variant, form_id: product_form_id -%}
+        </div>
+
+      {% when 'logo_text_block' %}
+        <div style="display: flex; flex-direction:column;line-height: 20px;" class="reenie-beanie-regular">
+          <div class="customtext" style="display: flex; align-items:center; margin-right: 10px;">
+            <img src="{{ product.metafields.custom.additional_icon1 | img_url: 'small' }}" alt="{{ product.metafields.custom.additional_icon1 }}" style="width: 40px;">
+            
+            <p style="margin-left: 20px;{{ blocks.settings.text_font_new |  font_face }}">{{ product.metafields.custom.additional_text1 }}</p>
+          </div>
+  
+          <div style="display: flex; align-items:center;">
+            <img src="{{ product.metafields.custom.additional_icon2 | img_url: 'small' }}" alt="{{ product.metafields.custom.additional_icon2 }}" style="width: 40px;">
+            <p class="custom-test reenie-beanie-regular" style="margin-left: 20px;">{{ product.metafields.custom.additional_text2 }}</p>
+          </div>
+
+          <div style="display: flex; align-items:center;">
+            <img src="{{ product.metafields.custom.additional_icon3 | img_url: 'small' }}" alt="{{ product.metafields.custom.additional_text3 }}" style="width: 40px;">
+            <p class="custom-test reenie-beanie-regular" style="margin-left: 20px;">{{ product.metafields.custom.addiotional_text3 }}</p>
+          </div>
         </div>
 
       {%- when 'text' -%}
