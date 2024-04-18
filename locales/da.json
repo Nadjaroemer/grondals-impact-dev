@@ -67,7 +67,7 @@
   },
   "product": {
     "general": {
-      "description": "Beskrivelse",
+      "description": "Om Produktet",
       "view_product": "Vis produkt",
       "quick_add": "+ Hurtig tilføjelse",
       "add_to_cart_short": "+ Tilføj",
