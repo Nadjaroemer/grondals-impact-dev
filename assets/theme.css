@@ -405,7 +405,7 @@ height-observer, visibility-progress, scroll-area, video-media, model-media, med
   border-bottom: none;
   border-color: transparent;
   background-repeat: repeat-x;
-  background-size: 272% 9px;
+  background-size: 100% 4px;
   background-image:url('../assets/grondals-bolge-petroleum.png');
 }
 @media screen and (max-width: 500px) {
