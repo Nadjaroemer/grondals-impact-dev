@@ -78,10 +78,8 @@
       </svg>
 
     {%- when 'hamburger' -%}
-      <svg width="40" height="35" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6.74414 15.3309C8.17385 13.6654 11.0397 13.6654 12.4694 15.3309C13.8991 16.9963 16.7649 16.9963 18.1946 15.3309C19.6243 13.6654 22.4901 13.6654 23.9198 15.3309C25.3495 16.9963 28.2154 16.9963 29.6451 15.3309C31.0748 13.6654 33.9342 13.6654 35.3703 15.3309" stroke="#2A6887" stroke-width="2" stroke-linecap="round"/>
-        <path d="M6.74414 7.65971C8.17385 5.99429 11.0397 5.99429 12.4694 7.65971C13.8991 9.32513 16.7649 9.32513 18.1946 7.65971C19.6243 5.99429 22.4901 5.99429 23.9198 7.65971C25.3495 9.32513 28.2154 9.32513 29.6451 7.65971C31.0748 5.99429 33.9342 5.99429 35.3703 7.65971" stroke="#2A6887" stroke-width="2" stroke-linecap="round"/>
-        <path d="M6.74414 23.0074C8.17385 21.3419 11.0397 21.3419 12.4694 23.0074C13.8991 24.6728 16.7649 24.6728 18.1946 23.0074C19.6243 21.3419 22.4901 21.3419 23.9198 23.0074C25.3495 24.6728 28.2154 24.6728 29.6451 23.0074C31.0748 21.3419 33.9342 21.3419 35.3703 23.0074" stroke="#2A6887" stroke-width="2" stroke-linecap="round"/>
+      <svg role="presentation" stroke-width="{{ stroke_width | default: settings.icon_stroke_width }}" focusable="false" width="{{ width | default: 22 }}" height="{{ height | default: 22 }}" class="{{ class | strip }}" viewBox="0 0 22 22">
+        <path d="M1 5h20M1 11h20M1 17h20" stroke="currentColor" stroke-linecap="round"></path>
       </svg>
 
 
