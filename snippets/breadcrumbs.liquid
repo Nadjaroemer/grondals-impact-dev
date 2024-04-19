@@ -1,0 +1,61 @@
+<style>
+.breadcrumbs {
+    padding: 1rem 3rem;
+}
+   .breadcrumbs__list {
+  font-family: sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs__item {
+  display: inline-block;
+  font-size: 0.9em;
+  margin-right: 0.35em;
+}
+
+.breadcrumbs__item:not(:last-child):after {
+  border-style: solid;
+  border-width: 0.1em 0.1em 0 0;
+  content: "";
+  display: inline-block;
+  height: 0.2em;
+  margin: 0 0.2em;
+  position: relative;
+  transform: rotate(45deg);
+  vertical-align: middle;
+  width: 0.2em;
+}
+
+.breadcrumbs__link {
+  text-decoration: underline;
+}
+
+.breadcrumbs__link[aria-current="page"] {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.breadcrumbs__link[aria-current="page"]:hover,
+.breadcrumbs__link[aria-current="page"]:focus {
+  text-decoration: underline;
+}
+</style>
+
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+{%- assign t = template | split: '.' | first -%}
+
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ul class="breadcrumbs__list">
+     <a class="breadcrumbs__link breadcrumbs__item" href="{{ routes.root_url }}">Hjem </a>
+    {% for collection_item in product.metafields.custom.breadcrumb_collection.value %}
+      <li class="breadcrumbs__item">
+        <a href="{{ collection_item.url }}" class="breadcrumbs__link">{{ collection_item.title }}</a>
+      </li>
+    {% endfor %}
+    <li class="breadcrumbs__item">{{ product.title }}</li>
+  </ul>
+</nav>
+{%- endunless -%}
