@@ -3,7 +3,11 @@
 In the following, you find all code changes to the Grondals webshop.
 
 ## Header
+1. Disabled account-icon. Delete ```style="display: none"``` if you want to get the icon back on the shop
 
+```
+<a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="hidden tap-area sm:block" style="display: none;">
+```
 ## Footer
 
 Add payment icons to the footer
@@ -68,3 +72,15 @@ Replace border with wave-image. Add background image to **.accordion__toggle**
 }
 ````
 ## Product Card
+1. Add block setting to *featured-product.liquid*
+
+```
+{
+      "type": "logo_text_block",
+      "name": "Logo Text Block"
+}
+```
+2. Change "Beskrivelse" to "Produktinformation" in locales/da.json
+````
+     "description": "Om Produktet"
+````
