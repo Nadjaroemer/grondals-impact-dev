@@ -1,0 +1,113 @@
+{%- comment -%}
+  divide-section.liquid
+  Purpose: Allows choosing an image in the editor and customizing its width, padding (top and bottom), and margin (right and left)
+{%- endcomment -%}
+
+{%- schema -%}
+  {
+    "name": "Divider Section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_desktop",
+        "label": "Divider Image (Desktop)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Divider Image (Mobile)"
+      },
+      {
+        "type": "range",
+        "id": "image_width",
+        "label": "Image Width (%)",
+        "default": 100,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top (px)",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom (px)",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "margin_right",
+        "label": "Margin Right (px)",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "margin_left",
+        "label": "Margin Left (px)",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      }
+    ],
+    "presets": [
+      {
+        "category": "Divider",
+        "name": "Divider Section"
+      }
+    ]
+  }
+{%- endschema -%}
+
+<div class="divider-section">
+  {%- if section.settings.image_desktop != blank -%}
+    <img class="desktop" src="{{ section.settings.image_desktop | img_url: 'master' }}" alt="Divider Image (Desktop)" style="width:{{ section.settings.image_width }}%; margin-right:{{ section.settings.margin_right }}px; margin-left:{{ section.settings.margin_left }}px; padding-top:{{ section.settings.padding_top }}px; padding-bottom:{{ section.settings.padding_bottom }}px;">
+  {%- endif -%}
+  {%- if section.settings.image_mobile != blank -%}
+    <img class="mobile" src="{{ section.settings.image_mobile | img_url: 'master' }}" alt="Divider Image (Mobile)" style="width:{{ section.settings.image_width }}%; margin-right:{{ section.settings.margin_right }}px; margin-left:{{ section.settings.margin_left }}px; padding-top:{{ section.settings.padding_top }}px; padding-bottom:{{ section.settings.padding_bottom }}px;">
+  {%- endif -%}
+</div>
+
+{%- stylesheet -%}
+  .divider-section {
+    text-align: center;
+  }
+
+  .divider-section img {
+    max-width: 100%;
+    height: {{ section.settings.padding_top }};
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .desktop {
+      display: none;
+    }
+    
+    .mobile {
+      display: block;
+    }
+  }
+{%- endstylesheet -%}
