@@ -1,4 +1,4 @@
-{%- assign paymentIconsFix = "mobilepay,dankort,visa,master,klarna,maestro,apple_pay" | split: "," -%}
+{%- assign paymentIconsFix = "mobilepay,dankort,visa,master,maestro,apple_pay" | split: "," -%}
 <cart-drawer {% if request.design_mode %}handle-section-events{% endif %} class="cart-drawer drawer drawer--lg" id="cart-drawer">
   {%- if cart.item_count == 0 -%}
     <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}">
