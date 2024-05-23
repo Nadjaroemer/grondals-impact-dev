@@ -1,5 +1,5 @@
 {%- assign newsletter_block = section.blocks | where: 'type', 'newsletter' | first -%}
-{%- assign paymentIconsFix = "mobilepay,dankort,visa,master,klarna,maestro,apple_pay" | split: "," -%}
+{%- assign paymentIconsFix = "mobilepay,dankort,visa,master,maestro,apple_pay" | split: "," -%}
 
 {%- if section.blocks.size > 3 -%}
 <style>
@@ -86,7 +86,7 @@
                       </div>
                     {%- endif -%}
 
-                    {%- form 'customer', id: 'footer-newsletter', class: 'footer__newsletter-form form' -%}
+                    {% comment %} {%- form 'customer', id: 'footer-newsletter', class: 'footer__newsletter-form form' -%}
                       {%- if form.posted_successfully? -%}
                         {%- capture success_message -%}{{ 'general.newsletter.subscribed_successfully' | t }}{%- endcapture -%}
                         {%- render 'banner', content: success_message, status: 'success' -%}
@@ -101,7 +101,8 @@
                         {%- capture label -%}{{ 'general.newsletter.email' | t }}{%- endcapture -%}
                         {%- render 'input', name: 'contact[email]', label: label, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send', self_submit: true -%}
                       {%- endif -%}
-                    {%- endform -%}
+                    {%- endform -%} {% endcomment %}
+                    <div class="klaviyo-form-RLPbvY" style="margin: 0px !important"></div>
                   </div>
                 </div>
             {%- endcase -%}

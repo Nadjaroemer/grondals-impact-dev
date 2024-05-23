@@ -230,23 +230,25 @@
         </div>
 
       {% when 'logo_text_block' %}
+        {% if product.metafields.custom.additional_text1 %}
         <div style="display: flex; flex-direction:column;line-height: 20px;" class="reenie-beanie-regular">
           <div class="customtext" style="display: flex; align-items:center; margin-right: 10px;">
             <img src="{{ product.metafields.custom.additional_icon1 | img_url: 'small' }}" alt="{{ product.metafields.custom.additional_icon1 }}" style="width: 40px;">
             
-            <p style="margin-left: 20px;{{ blocks.settings.text_font_new |  font_face }}">{{ product.metafields.custom.additional_text1 }}</p>
+            <p style="margin-left: 10px;{{ blocks.settings.text_font_new |  font_face }}">{{ product.metafields.custom.additional_text1 }}</p>
           </div>
   
           <div style="display: flex; align-items:center;">
             <img src="{{ product.metafields.custom.additional_icon2 | img_url: 'small' }}" alt="{{ product.metafields.custom.additional_icon2 }}" style="width: 40px;">
-            <p class="custom-test reenie-beanie-regular" style="margin-left: 20px;">{{ product.metafields.custom.additional_text2 }}</p>
+            <p class="custom-test reenie-beanie-regular" style="margin-left: 10px;">{{ product.metafields.custom.additional_text2 }}</p>
           </div>
 
           <div style="display: flex; align-items:center;">
             <img src="{{ product.metafields.custom.additional_icon3 | img_url: 'small' }}" alt="{{ product.metafields.custom.additional_text3 }}" style="width: 40px;">
-            <p class="custom-test reenie-beanie-regular" style="margin-left: 20px;">{{ product.metafields.custom.addiotional_text3 }}</p>
+            <p class="custom-test reenie-beanie-regular" style="margin-left: 10px;">{{ product.metafields.custom.addiotional_text3 }}</p>
           </div>
         </div>
+        {% endif %}
 
       {%- when 'text' -%}
         {%- if block.settings.text != blank -%}

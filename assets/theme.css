@@ -6650,9 +6650,10 @@ split-lines {
 
 .images-scrolling__counter:before {
   content: "";
-  background: currentColor;
   width: 1.5rem;
   height: .125rem;
+  background-image:url('../assets/wave-small-section.png');
+  background-size: 68% 2px;
 }
 
 .images-scrolling__icon {
@@ -9963,8 +9964,8 @@ split-lines {
 /* Header Wave-Image */
 .header-wave-image {
   width: 3000px; 
-  height: 36px;
-  margin-top: -10px
+  height: 26px;
+  margin-top: -4px
 }
 /* Header Wave-Image End*/
 
@@ -9982,4 +9983,12 @@ hr.product-info__separator {
     background-repeat: no-repeat;
     height: 6px;
     border: 0;
+}
+
+* .accordion__toggle {
+  border-style: none;
+}
+
+.klaviyo-form-version-cid_1 {
+  margin: 0px !important;
 }

@@ -65,7 +65,7 @@ Supported variables
     {%- for filter in results.filters -%}
       {%- if filter.type == 'boolean' or filter.param_name == 'filter.v.availability' -%}
         <div class="accordion">
-          <div class="accordion__toggle">
+          <div class="accordion__toggle filter-test">
             {%- if filter.param_name == 'filter.v.availability' -%}
               <label for="{{ id_prefix }}-{{ filter.param_name }}" class="bold">{{- 'collection.faceting.availability_label' | t -}}</label>
               <input id="{{ id_prefix }}-{{ filter.param_name }}" type="checkbox" class="switch" name="{{ filter.param_name }}" value="1" {% if filter.active_values.size > 0 %}checked{% endif %}>
