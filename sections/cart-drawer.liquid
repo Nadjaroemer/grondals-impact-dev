@@ -161,6 +161,13 @@
         {%- endif -%}
       </div>
 
+      {% comment %} <form id="myForm">
+        <input type="checkbox" id="myCheckbox">
+        <label for="myCheckbox">Jeg accepterer handelsbetingelserne</label>
+       </form> {% endcomment %}
+     {% comment %} <button type="button" id="submitButton">Submit</button> {% endcomment %}
+    {% comment %} <div id="reminderMessage">Please remember to check the checkbox!</div> {% endcomment %}
+
       <form action="{{ routes.cart_url }}" method="POST" class="buy-buttons {% if section.settings.show_checkout_button %}buy-buttons--compact{% endif %}">
         {%- assign checkout_label = 'cart.general.checkout' | t -%}
 
