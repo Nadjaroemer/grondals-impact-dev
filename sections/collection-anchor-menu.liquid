@@ -1,0 +1,160 @@
+<style>
+.scroll-area-background {
+  background-color: #f5f5f5; 
+}
+
+.section-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.collection-filter-list {
+  text-align: center;
+}
+
+.collection-filter-list ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #f5f5f5;
+  padding: 10px 0;
+}
+
+.collection-filter-list li {
+  list-style-type: none;
+  margin: 0 15px;
+}
+
+.collection-filter-list a {
+  text-decoration: none;
+  font-weight: normal;
+  color: gray;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.collection-filter-list a:focus{
+font-weight: bold;
+  color: black;
+  background-color: white; /* Change this to the desired selected background color */
+  padding-bottom: 36px;
+}
+</style>
+
+ {% if collection.handle == 'tun-paa-daase' or collection.handle == 'makrel' or collection.handle == 'pluk-selv-konserves' or collection.handle == 'sardiner-paa-daase' or collection.handle == 'ansjoser' or collection.handle == 'blaeksprutter' or collection.handle == 'brislinger' or collection.handle == 'muslinger' or collection.handle == 'oliven'%}
+<div class="scroll-area scroll-area-background bleed sm:unbleed justify-items-center container">
+  {% if section.settings.section_title %}
+    <h2 class="section-title">{{ section.settings.section_title }}</h2>
+  {% endif %}
+  {% if section.settings.section_subtitle %}
+    <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+  {% endif %}
+  <div class="blog-filter-list bleed">
+    <ul class="h-stack bold text-base" role="tablist">
+      <li role="tab" class="menu-item">
+        <a href="{{ section.settings.all_posts_collection | link }}" class="collection-link" data-collection="all" aria-selected="true">Alle</a>
+      </li>
+      {% for block in section.blocks %}
+        <li role="tab" class="menu-item">
+          <a href="{{ block.settings.collection | link }}" class="collection-link" data-collection="{{ block.settings.collection.handle }}" aria-selected="false">{{ block.settings.collection_title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.collection-link');
+    const currentPath = window.location.pathname;
+
+    links.forEach(link => {
+      if (currentPath.includes(link.getAttribute('href'))) {
+        console.log('do we get here?');
+        links.forEach(l => l.setAttribute('aria-selected', 'false'));
+        link.setAttribute('aria-selected', 'true');
+      }
+
+      link.addEventListener('click', function() {
+        links.forEach(l => l.setAttribute('aria-selected', 'false'));
+        this.setAttribute('aria-selected', 'true');
+      });
+    });
+  });
+</script> 
+
+{% schema %}
+{
+  "name": "Anchor Menu",
+  "class": "shopify-section--collection-list",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "all_posts_collection",
+      "label": "All Posts Collection"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Collections"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Browse our variety of collections"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "collection_title",
+          "label": "Collection Title",
+          "default": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Anchor Menu",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
